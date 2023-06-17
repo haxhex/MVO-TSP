@@ -16,7 +16,7 @@ The MVO algorithm consists of the following steps:
 
 In the provided implementation, I applied the MVO algorithm to the Traveling Salesman Problem (TSP). The algorithm starts with generating random tours as universes and evaluates their fitness using the total distance of the tours. The universes are updated by swapping two cities in the selected universe, and the new universe replaces the old one if it has better fitness. The algorithm converges to an optimal or near-optimal solution after a certain number of iterations.
 
-## Sample Output ##:
+## Sample Output:
 
 Here's an example of what the output may look like:
 
