@@ -44,11 +44,6 @@ def terminate():
 
 def convert_input(raw_input):
     # convert our input here
-    v = len(raw_input)
-    converted_input = np.zeros((v, v))
-    for i in range(v):
-        for j in range(v):
-            converted_input[i][j] = euclidean_distance(raw_input[i], raw_input[j])
     return converted_input
 
 def convert_output(native_output):
@@ -70,11 +65,6 @@ def native_process(data):
     # Apply MVO to the TSP problem
     permutation, total_distance = mvo_tsp(cities, population_size, num_iterations, w_ep)
     return permutation, total_distance
-
-# test converting input
-# cities = [np.random.rand(2) for _ in range(5)]
-# print("raw input be like :\n", cities)
-# print("converted input be like :\n", convert_input(cities))
 
 # what is data?
 data = 0
