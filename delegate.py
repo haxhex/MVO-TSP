@@ -22,7 +22,7 @@ as the duty of implementor:
     *** if two nodes do not have a edge connecting them directly, corresponding index will be set to -1.
 """
 #from .exact.dynamic_programming import solve_tsp_dynamic_programming
-from mvo_tsp import euclidean_distance
+from mvo_tsp import euclidean_distance, mvo_tsp, create_tsp_problem
 import numpy as np
 
 def native_id():
@@ -55,14 +55,27 @@ def convert_output(native_output):
     # convert your output here
     return native_output
 
-
+# what is data?
 def native_process(data):
     # delete line below, replace it with your own code
     # your return type must be a tuple consisting of permutation and total distance
-    permutation, total_distance = solve_tsp_dynamic_programming(data)
+    num_cities = 30
+    population_size = 50
+    num_iterations = 10
+    w_ep = 1
+
+    # Create a random TSP problem
+    cities = create_tsp_problem(num_cities)
+
+    # Apply MVO to the TSP problem
+    permutation, total_distance = mvo_tsp(cities, population_size, num_iterations, w_ep)
     return permutation, total_distance
 
 # test converting input
 # cities = [np.random.rand(2) for _ in range(5)]
 # print("raw input be like :\n", cities)
 # print("converted input be like :\n", convert_input(cities))
+
+# what is data?
+data = 0
+print(native_process(data))
