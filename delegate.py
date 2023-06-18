@@ -22,8 +22,9 @@ as the duty of implementor:
     *** if two nodes do not have a edge connecting them directly, corresponding index will be set to -1.
 """
 #from .exact.dynamic_programming import solve_tsp_dynamic_programming
-from mvo_tsp import euclidean_distance, mvo_tsp, create_tsp_problem
+from mvo_tsp import *
 import numpy as np
+
 
 def native_id():
     # return your project name, team name or some unique id
@@ -54,7 +55,9 @@ def convert_output(native_output):
 def native_process(data):
     # delete line below, replace it with your own code
     # your return type must be a tuple consisting of permutation and total distance
-    num_cities = 30
+
+    # with som num_cities does not work(has error). why?
+    num_cities = 20
     population_size = 50
     num_iterations = 1000
     w_ep = 1
@@ -64,8 +67,16 @@ def native_process(data):
 
     # Apply MVO to the TSP problem
     permutation, total_distance = mvo_tsp(cities, population_size, num_iterations, w_ep)
+
+    # plot the best tour
+    plot_tour(cities, permutation)
+    # return standard data
     return permutation, total_distance
 
 # what is data?
+
+# ----------------------
+# Test the algorithm
+# ----------------------
 data = 0
 print(native_process(data))

@@ -80,28 +80,9 @@ def mvo_tsp(cities, population_size, num_iterations, w_ep):
 
     return best_solution, best_solution_fitness
 
-# ----------------------
-# Test the algorithm
-# ----------------------
-# # Parameters
-# num_cities = 30
-# population_size = 50
-# num_iterations = 1000
-# w_ep = 1
-
-# # Create a random TSP problem
-# cities = create_tsp_problem(num_cities)
-
-# # Apply MVO to the TSP problem
-# best_tour, best_distance = mvo_tsp(cities, population_size, num_iterations, w_ep)
-
-# # Print the best tour and its distance
-# print("Best tour:", best_tour)
-# print("Best distance:", best_distance)
-
-# # Plot the best tour
-# plt.scatter([city[0] for city in cities], [city[1] for city in cities], color='red', zorder=1)
-# plt.plot([cities[city][0] for city in best_tour + [best_tour[0]]], [cities[city][1] for city in best_tour + [best_tour[0]]], zorder=0)
-# for i, city in enumerate(cities):
-#     plt.annotate(str(i), xy=(city[0], city[1]), xytext=(5, 5), textcoords='offset points')
-# plt.show()
+def plot_tour(cities, best_tour):
+    plt.scatter([city[0] for city in cities], [city[1] for city in cities], color='red', zorder=1)
+    plt.plot([cities[city][0] for city in best_tour + [best_tour[0]]], [cities[city][1] for city in best_tour + [best_tour[0]]], zorder=0)
+    for i, city in enumerate(cities):
+        plt.annotate("v"+str(i), xy=(city[0], city[1]), xytext=(5, 5), textcoords='offset points')
+    plt.show()
