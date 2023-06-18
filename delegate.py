@@ -21,8 +21,9 @@ as the duty of implementor:
     *** input of your code will be a 2D numpy array where each index represents edge connecting nodes i and j.
     *** if two nodes do not have a edge connecting them directly, corresponding index will be set to -1.
 """
-from .exact.dynamic_programming import solve_tsp_dynamic_programming
-
+#from .exact.dynamic_programming import solve_tsp_dynamic_programming
+from mvo_tsp import euclidean_distance
+import numpy as np
 
 def native_id():
     # return your project name, team name or some unique id
@@ -43,8 +44,12 @@ def terminate():
 
 def convert_input(raw_input):
     # convert our input here
-    return raw_input
-
+    v = len(raw_input)
+    converted_input = np.zeros((v, v))
+    for i in range(v):
+        for j in range(v):
+            converted_input[i][j] = euclidean_distance(raw_input[i], raw_input[j])
+    return converted_input
 
 def convert_output(native_output):
     # convert your output here
@@ -56,3 +61,8 @@ def native_process(data):
     # your return type must be a tuple consisting of permutation and total distance
     permutation, total_distance = solve_tsp_dynamic_programming(data)
     return permutation, total_distance
+
+# test converting input
+# cities = [np.random.rand(2) for _ in range(5)]
+# print("raw input be like :\n", cities)
+# print("converted input be like :\n", convert_input(cities))
