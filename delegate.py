@@ -61,7 +61,7 @@ def native_process(data):
     # your return type must be a tuple consisting of permutation and total distance
     num_cities = 30
     population_size = 50
-    num_iterations = 10
+    num_iterations = 1000
     w_ep = 1
 
     # Create a random TSP problem
