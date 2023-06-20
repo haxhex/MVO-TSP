@@ -56,17 +56,16 @@ def native_process(data):
     # delete line below, replace it with your own code
     # your return type must be a tuple consisting of permutation and total distance
 
-    # with som num_cities does not work(has error). why?
-    num_cities = 20
+    num_cities = 5
     population_size = 50
     num_iterations = 1000
-    w_ep = 1
+    # w_ep = 1
 
     # Create a random TSP problem
     cities = create_tsp_problem(num_cities)
 
     # Apply MVO to the TSP problem
-    permutation, total_distance = mvo_tsp(cities, population_size, num_iterations, w_ep)
+    permutation, total_distance = mvo_tsp(cities, population_size, num_iterations)
 
     # plot the best tour
     plot_tour(cities, permutation)
