@@ -98,9 +98,10 @@ def plot_tour(cities, best_tour):
         plt.annotate("v"+str(i), xy=(city[0], city[1]), xytext=(5, 5), textcoords='offset points')
     plt.show()
 
-# This plot show the distance between cities
-# It can be used to check calculations are correct
-# It's better to use it we number of cities are not a lot
+# This plot displays the distances between the cities in the TSP problem.
+# It can be used to verify that the distance calculations are correct.
+# The plot is particularly useful when the number of cities is relatively small, 
+# as it allows for a clearer visualization of the distances.
 def plot_tour2(cities, best_tour):
     # Plots a TSP tour using Matplotlib
     plt.scatter([city[0] for city in cities], [city[1] for city in cities], color='red', zorder=1)
@@ -121,13 +122,13 @@ def plot_tour2(cities, best_tour):
     plt.show()
 
 # Example usage
-num_cities = 5
+num_cities = 10
 cities = create_tsp_problem(num_cities)
 population_size = 100
 num_iterations = 1000
 best_tour, best_distance = mvo_tsp(cities, population_size, num_iterations)
 print("Best tour:", best_tour)
 print("Best distance:", best_distance)
-# plot_tour(cities, best_tour)
-plot_tour2(cities, best_tour)
+plot_tour(cities, best_tour)
+# plot_tour2(cities, best_tour)
 plt.show()
