@@ -14,18 +14,18 @@ def create_tsp_problem(num_cities):
     cities = [np.random.randint(10, size=2) for _ in range(num_cities)]
     return cities
 
-# Calculate the total distance of a TSP tour
-def total_distance(cities, tour):
-    return sum(euclidean_distance(cities[tour[i]], cities[tour[i - 1]]) for i in range(len(tour)))
-
 # Generate a random tour for the TSP problem
 def random_tour(num_cities):
     tour = list(range(num_cities))
     random.shuffle(tour)
     return tour
 
+# Calculate the total distance of a TSP tour
+def total_distance(cities, tour):
+    return sum(euclidean_distance(cities[tour[i]], cities[tour[i - 1]]) for i in range(len(tour)))
+
 # MVO algorithm function
-def mvo_tsp(cities, population_size, num_iterations, w_ep):
+def mvo_tsp(cities, population_size, num_iterations):
     num_cities = len(cities)
 
     # Initialize the universes (solutions)
@@ -71,7 +71,7 @@ def mvo_tsp(cities, population_size, num_iterations, w_ep):
                 fitness[i] = new_fitness
 
             # Update the wormhole existence probability
-            w_ep = w_ep * (1 - t / num_iterations)
+            # w_ep = w_ep * (1 - t / num_iterations)
 
     # Find the best solution
     best_solution_index = fitness.index(min(fitness))
